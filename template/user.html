@@ -1,0 +1,37 @@
+{% extends 'home.html'%}
+{%block content%}
+{% include 'nav.html'%}
+{% include 'status.html'%}
+
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md">
+                <h3>Products</h3>
+                <div class="cart cart-body">
+
+                    <table class="table table-sm">
+                        <tr>
+
+                            <th>Product</th>
+                            <th>Date</th>
+                            <th>Status</th>
+
+
+                        </tr>
+                        {%for product in u%}
+                        <tr>
+                            <td>{{product.products}}</td>
+                            <td>{{product.date}}</td>
+                            <td>{{product.status}}</td>
+                        </tr>
+                        {%endfor%}
+                    </table>
+                </div>
+
+
+            </div>
+    </div>
+</div>
+
+{%endblock%}

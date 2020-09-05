@@ -1,0 +1,10 @@
+{% extends 'home.html'%}
+{%block content%}
+{% include 'nav.html'%}
+<form class="form_container" action="" method="post">
+    {%csrf_token%}
+    {{form.as_p}}
+    <input class="btn btn-info" type="submit" name="Add">
+</form>
+
+{%endblock%}

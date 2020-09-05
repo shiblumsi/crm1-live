@@ -1,0 +1,94 @@
+{% extends 'home.html'%}
+{%block content%}
+{% include 'nav.html'%}
+<br>
+<div class="row">
+    <div class="col">
+        <div class="col-md" >
+        <div class="card text-center text-red">
+            <div class="card-header">
+                <h4 class="card-title"> Customer</h4>
+            </div>
+            <div class="card-body">
+                <a class="btn btn-success btn-sm btn-block">Update customer</a>
+                <a class="btn btn-danger btn-sm btn-block">Delete customer</a>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="col">
+        <div class="col-md" >
+        <div class="card text-center text-red">
+            <div class="card-header">
+                <h4 class="card-title"> Information</h4>
+            </div>
+            <div class="card-body">
+                <p class=" text-left">Name: {{customers.name}}</p>
+                <p class="text-left">Phone: {{customers.phone}}</p>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    <div class="col">
+        <div class="col-md" >
+        <div class="card text-center text-red">
+            <div class="card-header">
+                <h4 class="card-title"> Order perched</h4>
+            </div>
+            <div class="card-body">
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+</div>
+<br>
+
+<br>
+<div class="container">
+
+    <form class="form-inline my-2 my-lg-0" method="post">
+        {%csrf_token%}
+
+        {{filter_form.form}}
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</div>
+
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md">
+                <h3>Orders</h3>
+                <div class="cart cart-body">
+                    <a class="btn btn-success btn-sm btn-block" href="">create order</a>
+                    <table class="table table-sm">
+                        <tr>
+
+                            <th>Product</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Update</th>
+                            <th>Remove</th>
+                        </tr>
+                        {% for order in orders %}
+                        <tr>
+                            <td>{{order.products}}</td>
+                            <td>{{order.date}}</td>
+                            <td>{{order.status}}</td>
+                            <td><a class="btn btn-sm btn-info" href="{%url 'updateorder' order.id%}"> Update</a></td>
+                            <td><a class="btn btn-sm btn-danger" href="{%url 'deleteorder' order.id%}"> Delete</a></td>
+                        </tr>
+                        {%endfor%}
+                    </table>
+                </div>
+
+
+            </div>
+    </div>
+</div>
+{%endblock%}

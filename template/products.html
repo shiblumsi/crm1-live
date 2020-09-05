@@ -1,0 +1,39 @@
+{% extends 'home.html'%}
+{%block content%}
+{% include 'nav.html'%}
+<br>
+
+<br>
+<div class="container">
+    <a class="btn btn-sm btn-primary " style="text-align:right"  href="{% url 'addproduct'%}">Add product</a>
+    <div class="row">
+        <div class="col-md">
+                <h3>Products</h3>
+                <div class="cart cart-body">
+
+                    <table class="table table-sm">
+                        <tr>
+
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Date</th>
+
+
+                        </tr>
+                        {%for product in products%}
+                        <tr>
+                            <td>{{product.name}}</td>
+                            <td>{{product.price}}$</td>
+                            <td>{{product.date}}</td>
+
+
+                        </tr>
+                        {%endfor%}
+                    </table>
+                </div>
+
+
+            </div>
+    </div>
+</div>
+{%endblock%}
